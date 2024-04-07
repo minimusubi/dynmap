@@ -20,46 +20,22 @@ import org.dynmap.utils.BlockStep;
 import org.json.simple.JSONObject;
 
 public class TopoHDShader implements HDShader {
+    private final ConfigurationNode configuration;
     private final String name;
     private final Color linecolor;  /* Color for topo lines */
-    private final Color fillcolor[];  /* Color for nontopo surfaces */
     private final Color watercolor;
     private BitSet hiddenids;
     private final int linespacing;
-    
+
     public TopoHDShader(DynmapCore core, ConfigurationNode configuration) {
+        this.configuration = configuration;
         name = (String) configuration.get("name");
         
-        fillcolor = new Color[256];   /* Color by Y */
-        /* Load defined colors from parameters */
-        for(int i = 0; i < 256; i++) {
-            fillcolor[i] = configuration.getColor("color" + i,  null);
-        }
         linecolor = configuration.getColor("linecolor", null);
         watercolor = configuration.getColor("watercolor", null);
         float wateralpha = configuration.getFloat("wateralpha", 1.0F);
         if (wateralpha < 1.0) {
             watercolor.setAlpha((int)(255 * wateralpha));
-        }
-        /* Now, interpolate missing colors */
-        if(fillcolor[0] == null) {
-            fillcolor[0] = new Color(0, 0, 0);
-        }
-        if(fillcolor[255] == null) {
-            fillcolor[255] = new Color(255, 255, 255);
-        }
-        int starty = 0;
-        for(int i = 1; i < 256; i++) {
-            if(fillcolor[i] != null) {  /* Found color? */
-                int delta = i - starty;
-                Color c0 = fillcolor[starty];
-                Color c1 = fillcolor[i];
-                /* Interpolate missing colors since last one */
-                for(int j = 1; j < delta; j++) {
-                    fillcolor[starty + j] = new Color((c0.getRed()*(delta-j) + c1.getRed()*j)/delta, (c0.getGreen()*(delta-j) + c1.getGreen()*j)/delta, (c0.getBlue()*(delta-j) + c1.getBlue()*j)/delta);
-                }
-                starty = i;  /* New start color */
-            }
         }
         hiddenids = new BitSet();
         setHidden(DynmapBlockState.AIR_BLOCK);  /* Air is hidden always */
@@ -125,9 +101,11 @@ public class TopoHDShader implements HDShader {
         protected HDMap map;
         private HDLighting lighting;
         private int scale;
-        private int heightshift;    /* Divide to keep in 0-127 range of colors */
+        private int heightshift;
         private boolean inWater;
         final int[] lightingTable;
+        
+        private Color fillcolor[]; /* Color for nontopo surfaces */
         
         private OurShaderState(MapIterator mapiter, HDMap map, MapChunkCache cache, int scale) {
             this.mapiter = mapiter;
@@ -143,13 +121,8 @@ public class TopoHDShader implements HDShader {
             }
             this.scale = scale;
             c = new Color();
-            /* Compute divider for Y - to map to existing color range */
-            int wh = mapiter.getWorldHeight();
-            heightshift = 0;
-            while(wh > 256) {
-                heightshift++;
-                wh >>= 1;
-            }
+            /* Allow color ranges for all world heights */
+            heightshift = -mapiter.getWorldYMin();
             if (MapManager.mapman.useBrightnessTable()) {
                 lightingTable = cache.getWorld().getBrightnessTable();
             }
@@ -157,7 +130,10 @@ public class TopoHDShader implements HDShader {
                 lightingTable = null;
             }
             inWater = false;
+            
+            generateColors();
         }
+
         /**
          * Get our shader
          */
@@ -191,6 +167,36 @@ public class TopoHDShader implements HDShader {
         private final boolean isHidden(DynmapBlockState blk) {
             return hiddenids.get(blk.globalStateIndex);
         }
+
+        private void generateColors() {
+            fillcolor = new Color[mapiter.getWorldHeight()]; /* Color by Y */
+            /* Load defined colors from parameters */
+            for (int i = 0; i < mapiter.getWorldHeight(); i++) {
+                fillcolor[i] = configuration.getColor("color" + (i + mapiter.getWorldYMin()), null);
+            }
+            /* Now, interpolate missing colors */
+            if (fillcolor[0] == null) {
+                fillcolor[0] = new Color(0, 0, 0);
+            }
+            if (fillcolor[fillcolor.length - 1] == null) {
+                fillcolor[fillcolor.length - 1] = new Color(255, 255, 255);
+            }
+            int starty = 0;
+            for (int i = 1; i < fillcolor.length; i++) {
+                if (fillcolor[i] != null) { /* Found color? */
+                    int delta = i - starty;
+                    Color c0 = fillcolor[starty];
+                    Color c1 = fillcolor[i];
+                    /* Interpolate missing colors since last one */
+                    for (int j = 1; j < delta; j++) {
+                        fillcolor[starty + j] = new Color((c0.getRed() * (delta - j) + c1.getRed() * j) / delta,
+                                (c0.getGreen() * (delta - j) + c1.getGreen() * j) / delta,
+                                (c0.getBlue() * (delta - j) + c1.getBlue() * j) / delta);
+                    }
+                    starty = i; /* New start color */
+                }
+            }
+        }
         
         /**
          * Process next ray step - called for each block on route
@@ -203,7 +209,7 @@ public class TopoHDShader implements HDShader {
                 return false;
             }
             int y = mapiter.getY();
-            if (y < 0) y = 0;	// Clamp at zero for now
+            
             /* See if we're close to an edge */
             int[] xyz = ps.getSubblockCoord();
             // Only color lines when spacing is matched
@@ -231,7 +237,7 @@ public class TopoHDShader implements HDShader {
                     }
                 }
                 else {
-                    c.setColor(fillcolor[y >> heightshift]);
+                    c.setColor(fillcolor[y + heightshift]);
                     inWater = false;
                 }
                 break;
@@ -250,7 +256,7 @@ public class TopoHDShader implements HDShader {
                     }
                 }
                 else {
-                    c.setColor(fillcolor[y >> heightshift]);
+                    c.setColor(fillcolor[y + heightshift]);
                     inWater = false;
                 }
                 break;

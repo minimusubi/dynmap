@@ -207,7 +207,7 @@ public class WebAuthManager {
         sender.sendMessage("Enter username and registration code when prompted on web page (" + publicRegistrationURL.toString() + ") to complete registration");
         if(other) {
             DynmapPlayer p = core.getServer().getPlayer(uid);
-            if(p != null) {
+            if(p != null && sender != p) {
                 p.sendMessage("The registration of your account for web access has been started.");
                 p.sendMessage("To complete the process, access the Login page on the Dynmap map");
                 p.sendMessage("Registration code: " + regkey);

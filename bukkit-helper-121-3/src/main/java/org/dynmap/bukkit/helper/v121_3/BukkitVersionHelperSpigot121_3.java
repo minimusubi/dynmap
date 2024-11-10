@@ -171,12 +171,12 @@ public class BukkitVersionHelperSpigot121_3 extends BukkitVersionHelper {
             //Log.info("statename=" + bname + "[" + sb + "], lightAtten=" + lightAtten);
             // Fill in base attributes
             bld.setBaseState(lastbs).setStateIndex(idx).setBlockName(bname).setStateName(sb).setAttenuatesLight(lightAtten);
-            if (bd.w() != null) { bld.setMaterial(bd.w().toString()); }
-    		if (bd.e()) { bld.setSolid(); }
-            if (bd.i()) { bld.setAir(); }
-            if (bd.a(TagsBlock.t)) { bld.setLog(); }
-            if (bd.a(TagsBlock.O)) { bld.setLeaves(); }
-            if ((!bd.y().c()) && ((bd.b() instanceof BlockFluids) == false)) {	// Test if fluid type for block is not empty
+            if (bd.e()) { bld.setSolid(); } // isSolid
+            if (bd.l()) { bld.setAir(); } // isAir
+            if (bd.a(TagsBlock.t)) { bld.setLog(); } // is(OVERWORLD_NATURAL_LOGS)
+            if (bd.a(TagsBlock.Q)) { bld.setLeaves(); } // is(LEAVES)
+            // getFluidState.isEmpty(), getBlock
+            if (!bd.y().c() && ((bd.b() instanceof BlockFluids) == false)) {	// Test if fluid type for block is not empty
 				bld.setWaterlogged();
 				//Log.info("statename=" + bname + "[" + sb + "] = waterlogged");
 			}

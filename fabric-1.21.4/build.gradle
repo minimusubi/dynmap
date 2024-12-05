@@ -8,11 +8,11 @@ group = parent.group
 
 eclipse {
     project {
-        name = "Dynmap(Fabric-1.20)"
+        name = "Dynmap(Fabric-1.21.4)"
     }
 }
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(17) // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(21) // Need this here so eclipse task generates correctly.
 
 configurations {
     shadow

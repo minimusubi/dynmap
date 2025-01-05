@@ -8,6 +8,10 @@ description = 'bukkit-helper-1.21.4'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = JavaLanguageVersion.of(17) // Need this here so eclipse task generates correctly.
 
+configurations.all {
+  exclude group: "com.mojang", module: "jtracy"
+}
+
 dependencies {
   implementation project(':bukkit-helper')
   implementation project(':dynmap-api')

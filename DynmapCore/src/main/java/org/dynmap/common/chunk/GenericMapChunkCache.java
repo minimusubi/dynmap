@@ -618,8 +618,8 @@ public abstract class GenericMapChunkCache extends MapChunkCache {
 
 	public void setChunks(DynmapWorld dw, List<DynmapChunk> chunks) {
 		this.dw = dw;
-		nsect = (dw.worldheight - dw.minY) >> 4;
-		sectoff = (-dw.minY) >> 4;
+		nsect = (int)Math.ceil((dw.worldheight - dw.minY) / 16.0);
+		sectoff = (int)(Math.ceil((-dw.minY) / 16.0));
 		this.chunks = chunks;
 
 		/* Compute range */

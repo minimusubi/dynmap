@@ -182,36 +182,36 @@ public class WebAuthManager {
         boolean other = false;
         if(args.length > 1) {
             if(!core.checkPlayerPermission(sender, "webregister.other")) {
-                sender.sendMessage("Not authorized to set web login information for other players");
+                sender.sendMessage("You're not authorised to access web registration info for other players");
                 return true;
             }
             uid = args[1];
             other = true;
         }
         else if (player == null) {   /* Console? */
-            sender.sendMessage("Must provide user ID to register web login");
+            sender.sendMessage("Must provide username to access web registration info");
             return true;
         }
         else {
             uid = player.getName();
         }
         if (checkUserName(uid) == false) {
-            sender.sendMessage("Invalid user ID");
+            sender.sendMessage("Invalid username. Did you type it correctly?");
             return true;
         }
         String regkey = String.format("%04d-%04d", rnd.nextInt(10000), rnd.nextInt(10000));
         pending_registrations.put(uid.toLowerCase(), regkey.toLowerCase());
-        sender.sendMessage("Registration pending for user ID: " + uid);
+        sender.sendMessage("Registration pending for username: " + uid);
         sender.sendMessage("Registration code: " + regkey);
         publicRegistrationURL = core.configuration.getString("publicURL", "index.html");
-        sender.sendMessage("Enter ID and code on registration web page (" + publicRegistrationURL.toString() + ") to complete registration");
+        sender.sendMessage("Enter username and registration code when prompted on web page (" + publicRegistrationURL.toString() + ") to complete registration");
         if(other) {
             DynmapPlayer p = core.getServer().getPlayer(uid);
-            if(p != null) {
+            if(p != null && sender != p) {
                 p.sendMessage("The registration of your account for web access has been started.");
                 p.sendMessage("To complete the process, access the Login page on the Dynmap map");
                 p.sendMessage("Registration code: " + regkey);
-                p.sendMessage("The user ID must match your account ID, but the password should NOT be the same.");
+                p.sendMessage("Enter your username and registration code when prompted on web page (" + publicRegistrationURL.toString() + ") to complete registration");
             }
         }
         core.events.trigger("loginupdated", null);

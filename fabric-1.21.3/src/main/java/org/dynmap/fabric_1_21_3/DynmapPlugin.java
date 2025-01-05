@@ -163,7 +163,7 @@ public class DynmapPlugin {
                     }
                     statename += p.getName() + "=" + bs.get(p).toString();
                 }
-                int lightAtten = bs.isOpaqueFullCube(EmptyBlockView.INSTANCE, BlockPos.ORIGIN) ? 15 : (bs.isTransparent(EmptyBlockView.INSTANCE, BlockPos.ORIGIN) ? 0 : 1);
+                int lightAtten = bs.isOpaqueFullCube() ? 15 : (bs.isTransparent() ? 0 : 1);
                 //Log.info("statename=" + bn + "[" + statename + "], lightAtten=" + lightAtten);
                 // Fill in base attributes
                 bld.setBaseState(basebs).setStateIndex(idx - baseidx).setBlockName(bn).setStateName(statename).setLegacyBlockID(idx).setAttenuatesLight(lightAtten);

@@ -60,7 +60,7 @@ public class FabricServer extends DynmapServerInterface {
     public FabricServer(DynmapPlugin plugin, MinecraftServer server) {
         this.plugin = plugin;
         this.server = server;
-        this.biomeRegistry = server.getRegistryManager().get(RegistryKeys.BIOME);
+        this.biomeRegistry = server.getRegistryManager().getOrThrow(RegistryKeys.BIOME);
     }
 
     private Optional<GameProfile> getProfileByName(String player) {

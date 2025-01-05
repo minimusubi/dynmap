@@ -8,12 +8,12 @@ import net.minecraft.util.collection.PackedIntegerArray;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.WordPackedArray;
-import net.minecraft.world.ChunkSerializer;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.chunk.ChunkManager;
 import net.minecraft.world.chunk.ChunkStatus;
+import net.minecraft.world.chunk.SerializedChunk;
 
 import org.dynmap.DynmapChunk;
 import org.dynmap.DynmapCore;
@@ -66,7 +66,8 @@ public class FabricMapChunkCache extends GenericMapChunkCache {
         if (cps.isChunkLoaded(chunk.x, chunk.z)) {
             NbtCompound nbt = null;
             try {
-                nbt = ChunkSerializer.serialize((ServerWorld) w, cps.getWorldChunk(chunk.x, chunk.z, false));
+                SerializedChunk sc = SerializedChunk.fromChunk((ServerWorld) w, cps.getWorldChunk(chunk.x, chunk.z, false));
+                nbt = sc.serialize();
             } catch (NullPointerException e) {
                 // TODO: find out why this is happening and why it only seems to happen since 1.16.2
                 Log.severe("ChunkSerializer.serialize threw a NullPointerException", e);

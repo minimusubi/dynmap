@@ -185,11 +185,10 @@ public class BukkitVersionHelperSpigot121 extends BukkitVersionHelper {
             //Log.info("statename=" + bname + "[" + sb + "], lightAtten=" + lightAtten);
             // Fill in base attributes
             bld.setBaseState(lastbs).setStateIndex(idx).setBlockName(bname).setStateName(sb).setAttenuatesLight(lightAtten);
-            if (bd.w() != null) { bld.setMaterial(bd.w().toString()); }
-    		if (bd.e()) { bld.setSolid(); }
+            if (bd.e()) { bld.setSolid(); }
             if (bd.i()) { bld.setAir(); }
             if (bd.a(TagsBlock.t)) { bld.setLog(); }
-            if (bd.a(TagsBlock.O)) { bld.setLeaves(); }
+            if (bd.a(TagsBlock.P)) { bld.setLeaves(); }
             if ((!bd.u().c()) && ((bd.b() instanceof BlockFluids) == false)) {	// Test if fluid type for block is not empty
 				bld.setWaterlogged();
 				//Log.info("statename=" + bname + "[" + sb + "] = waterlogged");
@@ -376,7 +375,7 @@ public class BukkitVersionHelperSpigot121 extends BukkitVersionHelper {
 		NBTBase val = rec.c(field);
         if(val == null) return null;
         if(val instanceof NBTTagByte) {
-            return ((NBTTagByte)val).h();
+            return ((NBTTagByte)val).i();
         }
         else if(val instanceof NBTTagShort) {
             return ((NBTTagShort)val).g();

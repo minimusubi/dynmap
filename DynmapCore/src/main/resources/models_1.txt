@@ -3451,8 +3451,10 @@ modellist:id=%dropper,state=facing:down,box=0.000000/0.000000/0.000000:16.000000
 [1.20.3-]modellist:id=%polished_tuff_slab,state=type:bottom,box=0.000000/0.000000/0.000000:16.000000/8.000000/16.000000:n/0/0.000000/8.000000/16.000000/16.000000:w/0/0.000000/8.000000/16.000000/16.000000:e/0/0.000000/8.000000/16.000000/16.000000:s/0/0.000000/8.000000/16.000000/16.000000:u/0/0.000000/0.000000/16.000000/16.000000:d/0/0.000000/0.000000/16.000000/16.000000
 [1.20.3-]customblock:id=%polished_tuff_stairs,class=org.dynmap.hdmap.renderer.StairStateRenderer
 [1.20.3-]customblock:id=%polished_tuff_wall,class=org.dynmap.hdmap.renderer.FenceWallBlockStateRenderer,type=tallwall
-[1.20.3-]customblock:id=%polished_tuff_stairs,class=org.dynmap.hdmap.renderer.StairStateRenderer
-[1.20.3-]customblock:id=%polished_tuff_wall,class=org.dynmap.hdmap.renderer.FenceWallBlockStateRenderer,type=tallwall
+[1.20.3-]customblock:id=%tuff_brick_stairs,class=org.dynmap.hdmap.renderer.StairStateRenderer
+[1.20.3-]modellist:id=%tuff_brick_slab,state=type:top,box=0.000000/8.000000/0.000000:16.000000/16.000000/16.000000:n/0/0.000000/0.000000/16.000000/8.000000:w/0/0.000000/0.000000/16.000000/8.000000:e/0/0.000000/0.000000/16.000000/8.000000:s/0/0.000000/0.000000/16.000000/8.000000:u/0/0.000000/0.000000/16.000000/16.000000:d/0/0.000000/0.000000/16.000000/16.000000
+[1.20.3-]modellist:id=%tuff_brick_slab,state=type:bottom,box=0.000000/0.000000/0.000000:16.000000/8.000000/16.000000:n/0/0.000000/8.000000/16.000000/16.000000:w/0/0.000000/8.000000/16.000000/16.000000:e/0/0.000000/8.000000/16.000000/16.000000:s/0/0.000000/8.000000/16.000000/16.000000:u/0/0.000000/0.000000/16.000000/16.000000:d/0/0.000000/0.000000/16.000000/16.000000
+[1.20.3-]customblock:id=%tuff_brick_wall,class=org.dynmap.hdmap.renderer.FenceWallBlockStateRenderer,type=tallwall
 [1.20.3-]customblock:id=%copper_door,id=%exposed_copper_door,id=%oxidized_copper_door,id=%weathered_copper_door,class=org.dynmap.hdmap.renderer.DoorStateRenderer
 [1.20.3-]customblock:id=%waxed_copper_door,id=%waxed_exposed_copper_door,id=%waxed_oxidized_copper_door,id=%waxed_weathered_copper_door,class=org.dynmap.hdmap.renderer.DoorStateRenderer
 

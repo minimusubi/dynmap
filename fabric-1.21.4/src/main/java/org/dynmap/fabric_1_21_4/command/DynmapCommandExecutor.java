@@ -1,4 +1,4 @@
-package org.dynmap.fabric_1_21.command;
+package org.dynmap.fabric_1_21_4.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.CommandDispatcher;
@@ -11,7 +11,7 @@ import net.minecraft.server.command.ServerCommandSource;
 
 import java.util.Arrays;
 
-import org.dynmap.fabric_1_21.DynmapPlugin;
+import org.dynmap.fabric_1_21_4.DynmapPlugin;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static net.minecraft.server.command.CommandManager.argument;

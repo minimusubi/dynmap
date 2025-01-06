@@ -1,9 +1,9 @@
-package org.dynmap.fabric_1_21.permissions;
+package org.dynmap.fabric_1_21_4.permissions;
 
 import net.minecraft.entity.player.PlayerEntity;
 import org.dynmap.ConfigurationNode;
 import org.dynmap.Log;
-import org.dynmap.fabric_1_21.DynmapPlugin;
+import org.dynmap.fabric_1_21_4.DynmapPlugin;
 
 import java.io.File;
 import java.util.HashMap;

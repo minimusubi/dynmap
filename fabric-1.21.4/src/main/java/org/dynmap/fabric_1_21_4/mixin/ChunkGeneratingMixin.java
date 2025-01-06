@@ -1,12 +1,12 @@
-package org.dynmap.fabric_1_21.mixin;
+package org.dynmap.fabric_1_21_4.mixin;
 
 import net.minecraft.world.chunk.ChunkGenerating;
 import net.minecraft.world.chunk.ChunkGenerationContext;
 import net.minecraft.world.chunk.AbstractChunkHolder;
 import net.minecraft.world.chunk.Chunk;
 
-import org.dynmap.fabric_1_21.access.ProtoChunkAccessor;
-import org.dynmap.fabric_1_21.event.CustomServerChunkEvents;
+import org.dynmap.fabric_1_21_4.access.ProtoChunkAccessor;
+import org.dynmap.fabric_1_21_4.event.CustomServerChunkEvents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

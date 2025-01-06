@@ -1,10 +1,10 @@
-package org.dynmap.fabric_1_21.mixin;
+package org.dynmap.fabric_1_21_4.mixin;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.chunk.ProtoChunk;
 
-import org.dynmap.fabric_1_21.access.ProtoChunkAccessor;
+import org.dynmap.fabric_1_21_4.access.ProtoChunkAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

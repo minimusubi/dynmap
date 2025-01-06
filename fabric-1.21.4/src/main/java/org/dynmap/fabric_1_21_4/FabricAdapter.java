@@ -1,4 +1,4 @@
-package org.dynmap.fabric_1_21;
+package org.dynmap.fabric_1_21_4;
 
 import net.minecraft.server.world.ServerWorld;
 import org.dynmap.DynmapLocation;

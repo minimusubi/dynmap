@@ -1,4 +1,4 @@
-package org.dynmap.fabric_1_21.event;
+package org.dynmap.fabric_1_21_4.event;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;

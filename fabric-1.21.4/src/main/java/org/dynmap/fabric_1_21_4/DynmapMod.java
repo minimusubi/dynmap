@@ -1,4 +1,4 @@
-package org.dynmap.fabric_1_21;
+package org.dynmap.fabric_1_21_4;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;

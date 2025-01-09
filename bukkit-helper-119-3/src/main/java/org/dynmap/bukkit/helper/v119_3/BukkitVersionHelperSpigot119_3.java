@@ -368,7 +368,7 @@ public class BukkitVersionHelperSpigot119_3 extends BukkitVersionHelper {
 		NBTBase val = rec.c(field);
         if(val == null) return null;
         if(val instanceof NBTTagByte) {
-            return ((NBTTagByte)val).h();
+            return ((NBTTagByte)val).i();
         }
         else if(val instanceof NBTTagShort) {
             return ((NBTTagShort)val).g();

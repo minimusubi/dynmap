@@ -4617,7 +4617,7 @@ block:id=%melon_stem,patch0=0:melon_stem,blockcolor=foliagebiome,transparency=TR
 [1.20.5-]texture:id=vault_front_on,filename=assets/minecraft/textures/block/vault_front_on.png,xcount=1,ycount=1
 [1.20.5-]texture:id=vault_front_ejecting,filename=assets/minecraft/textures/block/vault_front_ejecting.png,xcount=1,ycount=1
 [1.20.5-]texture:id=vault_top_ejecting,filename=assets/minecraft/textures/block/vault_top_ejecting.png,xcount=1,ycount=1
-[1.20.5-]texture:id=minecraft:all,filename=assets/minecraft/textures/all.png,xcount=1,ycount=1
+[1.20.5-]texture:id=heavy_core,filename=assets/minecraft/textures/block/heavy_core.png,xcount=2,ycount=2
 [1.20.5-]block:id=%vault,state=facing:north/ominous:true/vault_state:inactive,patch0=0:vault_side_off_ominous,patch1=0:vault_bottom_ominous,patch2=0:vault_top_ominous,patch3=0:vault_front_off_ominous,transparency=SEMITRANSPARENT,stdrot=true
 [1.20.5-]block:id=%vault,state=facing:north/ominous:true/vault_state:active,patch0=0:vault_side_on_ominous,patch1=0:vault_bottom_ominous,patch2=0:vault_top_ominous,patch3=0:vault_front_on_ominous,transparency=SEMITRANSPARENT,stdrot=true
 [1.20.5-]block:id=%vault,state=facing:north/ominous:true/vault_state:unlocking,patch0=0:vault_side_on_ominous,patch1=0:vault_bottom_ominous,patch2=0:vault_top_ominous,patch3=0:vault_front_ejecting_ominous,transparency=SEMITRANSPARENT,stdrot=true
@@ -4650,7 +4650,7 @@ block:id=%melon_stem,patch0=0:melon_stem,blockcolor=foliagebiome,transparency=TR
 [1.20.5-]block:id=%vault,state=facing:east/ominous:false/vault_state:active,patch0=0:vault_side_on,patch1=0:vault_bottom,patch2=0:vault_top,patch3=0:vault_front_on,transparency=SEMITRANSPARENT,stdrot=true
 [1.20.5-]block:id=%vault,state=facing:east/ominous:false/vault_state:unlocking,patch0=0:vault_side_on,patch1=0:vault_bottom,patch2=0:vault_top,patch3=0:vault_front_ejecting,transparency=SEMITRANSPARENT,stdrot=true
 [1.20.5-]block:id=%vault,state=facing:east/ominous:false/vault_state:ejecting,patch0=0:vault_side_on,patch1=0:vault_bottom,patch2=0:vault_top_ejecting,patch3=0:vault_front_ejecting,transparency=SEMITRANSPARENT,stdrot=true
-[1.20.5-]block:id=%heavy_core,patch0=0:minecraft:all,transparency=SEMITRANSPARENT,stdrot=true
+[1.20.5-]block:id=%heavy_core,patch0=0:heavy_core,patch1=1:heavy_core,patch2=2:heavy_core,transparency=SEMITRANSPARENT,stdrot=true
 
 # 1.21
 [1.21-]texture:id=copper_bulb_lit_powered,filename=assets/minecraft/textures/block/copper_bulb_lit_powered.png,xcount=1,ycount=1
@@ -4984,12 +4984,12 @@ block:id=%melon_stem,patch0=0:melon_stem,blockcolor=foliagebiome,transparency=TR
 [1.21.4-]texture:id=creaking_heart_top,filename=assets/minecraft/textures/block/creaking_heart_top.png,xcount=1,ycount=1
 [1.21.4-]texture:id=creaking_heart_active,filename=assets/minecraft/textures/block/creaking_heart_active.png,xcount=1,ycount=1
 [1.21.4-]texture:id=creaking_heart,filename=assets/minecraft/textures/block/creaking_heart.png,xcount=1,ycount=1
-[1.21.4-]block:id=%creaking_heart,active:false,state=axis:x,patch0=0:creaking_heart_top,patch1=6000:creaking_heart,patch2=6000:creaking_heart,patch3=0:creaking_heart_top,patch4=6000:creaking_heart,patch5=6000:creaking_heart,stdrot=true
-[1.21.4-]block:id=%creaking_heart,active:false,state=axis:y,patch0=0:creaking_heart,patch1=0:creaking_heart_top,patch2=0:creaking_heart,patch3=0:creaking_heart,patch4=0:creaking_heart_top,patch5=0:creaking_heart,stdrot=true
-[1.21.4-]block:id=%creaking_heart,active:false,state=axis:z,patch0=6000:creaking_heart,patch1=0:creaking_heart,patch2=0:creaking_heart_top,patch3=6000:creaking_heart,patch4=0:creaking_heart,patch5=0:creaking_heart_top,stdrot=true
-[1.21.4-]block:id=%creaking_heart_active,active:true,state=axis:x,patch0=0:creaking_heart_top_active,patch1=6000:creaking_heart_active,patch2=6000:creaking_heart_active,patch3=0:creaking_heart_top_active,patch4=6000:creaking_heart_active,patch5=6000:creaking_heart_active,stdrot=true
-[1.21.4-]block:id=%creaking_heart_active,active:true,state=axis:y,patch0=0:creaking_heart_active,patch1=0:creaking_heart_top_active,patch2=0:creaking_heart_active,patch3=0:creaking_heart_active,patch4=0:creaking_heart_top_active,patch5=0:creaking_heart_active,stdrot=true
-[1.21.4-]block:id=%creaking_heart_active,active:true,state=axis:z,patch0=6000:creaking_heart_active,patch1=0:creaking_heart_active,patch2=0:creaking_heart_top_active,patch3=6000:creaking_heart_active,patch4=0:creaking_heart_active,patch5=0:creaking_heart_top_active,stdrot=true
+[1.21.4-]block:id=%creaking_heart,state=axis:x/active:false,patch0=0:creaking_heart_top,patch1=6000:creaking_heart,patch2=6000:creaking_heart,patch3=0:creaking_heart_top,patch4=6000:creaking_heart,patch5=6000:creaking_heart,stdrot=true
+[1.21.4-]block:id=%creaking_heart,state=axis:y/active:false,patch0=0:creaking_heart,patch1=0:creaking_heart_top,patch2=0:creaking_heart,patch3=0:creaking_heart,patch4=0:creaking_heart_top,patch5=0:creaking_heart,stdrot=true
+[1.21.4-]block:id=%creaking_heart,state=axis:z/active:false,patch0=6000:creaking_heart,patch1=0:creaking_heart,patch2=0:creaking_heart_top,patch3=6000:creaking_heart,patch4=0:creaking_heart,patch5=0:creaking_heart_top,stdrot=true
+[1.21.4-]block:id=%creaking_heart,state=axis:x/active:true,patch0=0:creaking_heart_top_active,patch1=6000:creaking_heart_active,patch2=6000:creaking_heart_active,patch3=0:creaking_heart_top_active,patch4=6000:creaking_heart_active,patch5=6000:creaking_heart_active,stdrot=true
+[1.21.4-]block:id=%creaking_heart,state=axis:y/active:true,patch0=0:creaking_heart_active,patch1=0:creaking_heart_top_active,patch2=0:creaking_heart_active,patch3=0:creaking_heart_active,patch4=0:creaking_heart_top_active,patch5=0:creaking_heart_active,stdrot=true
+[1.21.4-]block:id=%creaking_heart,state=axis:z/active:true,patch0=6000:creaking_heart_active,patch1=0:creaking_heart_active,patch2=0:creaking_heart_top_active,patch3=6000:creaking_heart_active,patch4=0:creaking_heart_active,patch5=0:creaking_heart_top_active,stdrot=true
 #All the resin stuff
 [1.21.4-]texture:id=resin_bricks,filename=assets/minecraft/textures/block/resin_bricks.png,xcount=1,ycount=1
 [1.21.4-]texture:id=chiseled_resin_bricks,filename=assets/minecraft/textures/block/chiseled_resin_bricks.png,xcount=1,ycount=1

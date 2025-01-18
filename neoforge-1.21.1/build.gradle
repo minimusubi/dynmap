@@ -6,7 +6,7 @@ buildscript {
 }
 plugins {
     id  'eclipse'
-    id  'net.neoforged.gradle.userdev' version '7.0.177'
+    id  'net.neoforged.gradle.userdev' version '7.0.178'
 }
 
 eclipse {

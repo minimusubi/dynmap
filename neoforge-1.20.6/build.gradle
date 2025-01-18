@@ -5,13 +5,19 @@ buildscript {
     }
 }
 plugins {
-	id  'eclipse'
-	id  'net.neoforged.gradle.userdev' version '7.0.178'
+    id  'eclipse'
+    id  'net.neoforged.gradle.userdev' version '7.0.178'
 }
 
 eclipse {
     project {
         name = "Dynmap(NeoForge-1.20.6)"
+    }
+}
+
+minecraft {
+    accessTransformers {
+        file('src/main/resources/META-INF/accesstransformer.cfg')
     }
 }
 
@@ -23,12 +29,12 @@ println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getPro
 ext.buildNumber = System.getenv().BUILD_NUMBER ?: "Dev"
 
 
-project.archivesBaseName = "${project.archivesBaseName}-forge-1.20.6"
+project.archivesBaseName = "${project.archivesBaseName}-neoforge-1.20.6"
 
 dependencies {
     implementation project(path: ":DynmapCore", configuration: "shadow")
     implementation project(path: ':DynmapCoreAPI')
-    implementation "net.neoforged:neoforge:20.6.62-beta"
+    implementation "net.neoforged:neoforge:20.6.124"
 }
 
 processResources
@@ -36,9 +42,9 @@ processResources
     filesMatching('META-INF/neoforge.mods.toml') {
         // replace version and mcversion
         expand(
-        	version: project.version + '-' + project.ext.buildNumber,
-        	mcversion: "1.20.6"
-    	)
+            version: project.version + '-' + project.ext.buildNumber,
+            mcversion: "1.20.6"
+        )
     }
 }
 
@@ -49,7 +55,7 @@ shadowJar {
         exclude("META-INF/maven/**")
         exclude("META-INF/services/**")
     }
-	relocate('org.apache.commons.codec', 'org.dynmap.neoforge_1_20_6.commons.codec')
+    relocate('org.apache.commons.codec', 'org.dynmap.neoforge_1_20_6.commons.codec')
 
     archiveBaseName = "Dynmap"
     archiveClassifier = "neoforge-1.20.6"

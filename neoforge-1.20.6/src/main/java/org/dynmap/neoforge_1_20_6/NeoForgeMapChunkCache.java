@@ -3,8 +3,16 @@ package org.dynmap.neoforge_1_20_6;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerChunkCache;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.chunk.status.ChunkStatus;
+import net.minecraft.world.level.chunk.storage.ChunkSerializer;
+
 import org.dynmap.DynmapChunk;
 import org.dynmap.Log;
 import org.dynmap.common.BiomeMap;
@@ -12,25 +20,18 @@ import org.dynmap.common.chunk.GenericChunk;
 import org.dynmap.common.chunk.GenericChunkCache;
 import org.dynmap.common.chunk.GenericMapChunkCache;
 
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.server.level.ServerChunkCache;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.ChunkPos;
-import net.minecraft.world.level.chunk.ChunkAccess;
-import net.minecraft.world.level.chunk.storage.ChunkSerializer;
-import net.minecraft.world.level.chunk.status.ChunkStatus;
-
 /**
  * Container for managing chunks - dependent upon using chunk snapshots, since
  * rendering is off server thread
  */
-public class ForgeMapChunkCache extends GenericMapChunkCache {
+public class NeoForgeMapChunkCache extends GenericMapChunkCache {
 	private ServerLevel w;
 	private ServerChunkCache cps;
+
 	/**
 	 * Construct empty cache
 	 */
-	public ForgeMapChunkCache(GenericChunkCache cc) {
+	public NeoForgeMapChunkCache(GenericChunkCache cc) {
 		super(cc);
 	}
 
@@ -46,6 +47,7 @@ public class ForgeMapChunkCache extends GenericMapChunkCache {
 		}
 		return gc;
 	}
+
 	// Load generic chunk from unloaded chunk
 	protected GenericChunk loadChunk(DynmapChunk chunk) {
 		GenericChunk gc = null;
@@ -57,7 +59,7 @@ public class ForgeMapChunkCache extends GenericMapChunkCache {
 		return gc;
 	}
 
-	public void setChunks(ForgeWorld dw, List<DynmapChunk> chunks) {
+	public void setChunks(NeoForgeWorld dw, List<DynmapChunk> chunks) {
 		this.w = dw.getWorld();
 		if (dw.isLoaded()) {
 			/* Check if world's provider is ServerChunkProvider */
@@ -93,6 +95,7 @@ public class ForgeMapChunkCache extends GenericMapChunkCache {
 			return null;
 		}
 	}
+
 	@Override
 	public int getFoliageColor(BiomeMap bm, int[] colormap, int x, int z) {
 		return bm.<Biome>getBiomeObject().map(Biome::getSpecialEffects)
@@ -103,7 +106,9 @@ public class ForgeMapChunkCache extends GenericMapChunkCache {
 	@Override
 	public int getGrassColor(BiomeMap bm, int[] colormap, int x, int z) {
 		BiomeSpecialEffects effects = bm.<Biome>getBiomeObject().map(Biome::getSpecialEffects).orElse(null);
-		if (effects == null) return colormap[bm.biomeLookup()];
-		return effects.getGrassColorModifier().modifyColor(x, z, effects.getGrassColorOverride().orElse(colormap[bm.biomeLookup()]));
+		if (effects == null)
+			return colormap[bm.biomeLookup()];
+		return effects.getGrassColorModifier().modifyColor(x, z,
+				effects.getGrassColorOverride().orElse(colormap[bm.biomeLookup()]));
 	}
 }

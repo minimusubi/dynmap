@@ -569,7 +569,7 @@ public class TexturePack {
                 txtids[i] = ti.texture_ids.get(i).intValue();
             }
             HDBlockStateTextureMap map = new HDBlockStateTextureMap(txtids, null, ti.colorMult, ti.custColorMult, ti.blockset, true, null, ti.trans);
-            map.addToTable(ti.states);
+            map.addToTable(ti.states, -1);
         }
     }
     /**
@@ -2146,7 +2146,7 @@ public class TexturePack {
                         if (bsprslt.size() > 0) {
                             Integer colorIndex = (blockColorIdx >= 0)?(blockColorIdx + IMG_CNT):null;
                             HDBlockStateTextureMap map = new HDBlockStateTextureMap(faces, layers, colorMult, custColorMult, blockset, stdrot, colorIndex, trans);
-                            map.addToTable(bsprslt);
+                            map.addToTable(bsprslt, lineNum);
                             cnt++;
                         }
                         else {

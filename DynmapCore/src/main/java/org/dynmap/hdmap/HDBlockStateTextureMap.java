@@ -80,7 +80,7 @@ public class HDBlockStateTextureMap {
     }
     
     // Add block state to table, with given block IDs and state indexes
-    public void addToTable(Map<DynmapBlockState, BitSet> states) {
+    public void addToTable(Map<DynmapBlockState, BitSet> states, int lineNum) {
         /* Add entries to lookup table */
         for (DynmapBlockState baseblk : states.keySet()) {
             if (baseblk.isNotAir()) {
@@ -98,7 +98,7 @@ public class HDBlockStateTextureMap {
                 }
             }
             else {
-            	Log.warning("Invalid texture block name: " + baseblk.blockName);
+            	Log.warning("Invalid texture block name: " + baseblk.blockName + ((lineNum > 0) ? "(line " + lineNum + ")" : ""));
             }
         }
     }

@@ -2,11 +2,6 @@ package org.dynmap.neoforge_1_21_1;
 
 import java.io.File;
 
-import org.dynmap.DynmapCommonAPI;
-import org.dynmap.DynmapCommonAPIListener;
-import org.dynmap.Log;
-import org.dynmap.neoforge_1_21_1.DynmapPlugin.OurLog;
-
 import net.minecraft.server.MinecraftServer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -20,6 +15,11 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
+
+import org.dynmap.DynmapCommonAPI;
+import org.dynmap.DynmapCommonAPIListener;
+import org.dynmap.Log;
+import org.dynmap.neoforge_1_21_1.DynmapPlugin.OurLog;
 
 @Mod("dynmap")
 public class DynmapMod {

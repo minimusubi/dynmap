@@ -285,7 +285,7 @@ public class DynmapPlugin {
 	 * }
 	 * private static HashMap<Integer, WorldBusyRecord> busy_worlds = new
 	 * HashMap<Integer, WorldBusyRecord>();
-	 * 
+	 *
 	 * private void setBusy(World w) {
 	 * setBusy(w, null);
 	 * }
@@ -311,7 +311,7 @@ public class DynmapPlugin {
 	 * }
 	 * wbr.last_ts = System.nanoTime();
 	 * }
-	 * 
+	 *
 	 * private void doIdleOutOfWorlds() {
 	 * if (!DynmapMod.useforcedchunks) return;
 	 * long ts = System.nanoTime() - worldIdleTimeoutNS;

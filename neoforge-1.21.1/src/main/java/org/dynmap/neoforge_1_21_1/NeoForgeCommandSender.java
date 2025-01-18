@@ -1,9 +1,9 @@
 package org.dynmap.neoforge_1_21_1;
 
-import org.dynmap.common.DynmapCommandSender;
-
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
+
+import org.dynmap.common.DynmapCommandSender;
 
 /**
  * Handler for generic console command sender

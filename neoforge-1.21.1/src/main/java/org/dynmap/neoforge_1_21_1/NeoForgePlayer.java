@@ -6,17 +6,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.UUID;
 
-import org.dynmap.DynmapLocation;
-import org.dynmap.common.DynmapPlayer;
-import org.dynmap.neoforge_1_21_1.DynmapPlugin.TexturesPayload;
-
-import com.google.common.collect.Iterables;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket;
@@ -27,6 +16,17 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.phys.Vec3;
+
+import org.dynmap.DynmapLocation;
+import org.dynmap.common.DynmapPlayer;
+import org.dynmap.neoforge_1_21_1.DynmapPlugin.TexturesPayload;
+
+import com.google.common.collect.Iterables;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 
 /**
  * Player access abstraction class

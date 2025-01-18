@@ -6,11 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.minecraft.server.level.ServerPlayer;
+
 import org.dynmap.ConfigurationNode;
 import org.dynmap.Log;
 import org.dynmap.neoforge_1_21_1.DynmapPlugin;
-
-import net.minecraft.server.level.ServerPlayer;
 
 public class FilePermissions implements PermissionProvider {
 	private HashMap<String, Set<String>> perms;

@@ -21,6 +21,7 @@ import org.dynmap.utils.MapChunkCache;
 import org.dynmap.utils.Polygon;
 
 public class NeoForgeWorld extends DynmapWorld {
+	public static final String SAVED_WORLDS_FILE = "neoforgeworlds.yml";
 	private ServerLevelAccessor world;
 	private final boolean skylight;
 	private final boolean isnether;

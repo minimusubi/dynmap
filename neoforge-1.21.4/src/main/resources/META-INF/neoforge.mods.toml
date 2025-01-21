@@ -15,7 +15,7 @@ file="META-INF/accesstransformer.cfg"
 [[dependencies.dynmap]]
     modId="neoforge"
     mandatory=true
-    versionRange="[21.1,)"
+    versionRange="[21.4,)"
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="SERVER"
